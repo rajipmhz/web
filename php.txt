@@ -1,0 +1,460 @@
+Lab 5: Server Side Scripting using PHP
+
+
+i) Write a program to display “Hello World!” using variable. And find the following parameters. 
+a. Display the length of the string. 
+b. Display number of world in the string. 
+c. Display revers of the given string.
+ d. Display position of “!”,”hello” and “World”. 
+e. Replace the word “World” to your name and display it
+Code:
+<?php
+$message = "Hello World!";
+
+$length_of_string = strlen($message);
+echo "Length of the string: " . $length_of_string . "</br>";
+
+$number_of_words = str_word_count($message);
+echo "Number of words in the string: " . $number_of_words . "</br>";
+
+$reversed_string = strrev($message);
+echo "Reversed string: " . $reversed_string . "</br>";
+
+$position_exclamation = strpos($message, "!");
+$position_hello = stripos($message, "hello");
+$position_world = strpos($message, "World");
+
+echo "Position of '!': " . $position_exclamation . "</br>";
+echo "Position of 'hello': " . $position_hello . "</br>";
+echo "Position of 'World': " . $position_world . "</br>";
+
+$your_name = "Rajip";  
+$replaced_string = str_replace("World", $your_name, $message);
+echo "Replaced string: " . $replaced_string . "</br>";
+?>
+ 
+
+ii. Write a function called add with two parameter named a and b. which will return the sum of two     variable.
+Code:
+<?php
+function add($a, $b) {
+ return $a + $b;
+}
+$result = add(5, 7);
+echo "The sum of 5 and 7 is: " . $result . "\n";
+?>
+
+Output:
+ 
+iii. Write a function called fact which will find the factorial of the given number. Use if else condition to check the number is between1 to 100.
+Code:
+<?php
+function fact($n) {
+
+    if ($n < 1 || $n > 100) {
+        return "Number must be between 1 and 100.";
+    }
+
+    if ($n === 1) {
+        return 1;
+    } else {
+        return $n * fact($n - 1);
+    }
+}
+
+$number = 5;
+$result = fact($number);
+echo "The factorial of $number is: " . $result . "</br>";
+
+$number = 105;
+$result = fact($number);
+echo "Result for $number: " . $result . "</br>";
+?>
+
+
+iv. Write a program for adding 3x3 matrix using multidimensional array.
+Code:
+<?php
+function addMatrices($matrix1, $matrix2) {
+    $result = array();
+
+    for ($i = 0; $i < 3; $i++) {
+        for ($j = 0; $j < 3; $j++) {
+            $result[$i][$j] = $matrix1[$i][$j] + $matrix2[$i][$j];
+        }
+    }
+    return $result;
+}
+$matrix1 = array(
+    array(1, 2, 3),
+    array(4, 5, 6),
+    array(7, 8, 9)
+);
+$matrix2 = array(
+    array(9, 8, 7),
+    array(6, 5, 4),
+    array(3, 2, 1)
+);
+$result = addMatrices($matrix1, $matrix2);
+echo "The resulting matrix is:</br>";
+for ($i = 0; $i < 3; $i++) {
+    for ($j = 0; $j < 3; $j++) {
+        echo $result[$i][$j] . "\t";
+    }
+    echo "</br>";
+}
+?>
+
+ 
+v. Write a program to display “Howdy! FULL_NAME” where FULL_NAME is input from First and Last Name form using GET method.
+Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting Form</title>
+</head>
+<body>
+    <form method="get" action="">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required><br><br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+<?php
+if (isset($_GET['first_name']) && isset($_GET['last_name'])) {
+    $first_name = htmlspecialchars($_GET['first_name']);
+    $last_name = htmlspecialchars($_GET['last_name']);
+    $full_name = $first_name . " " . $last_name;
+    echo "Howdy! " . $full_name;
+} else {
+    echo "Please provide both first name and last name.";
+}
+?>
+
+
+vi. Write a program to display “Howdy! FULL_NAME” where FULL_NAME is input from First and Last Name form using POST method.
+Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Form</title>
+</head>
+<body>
+    <form action="process.php" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+//process.php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstName = htmlspecialchars($_POST['firstName']);
+    $lastName = htmlspecialchars($_POST['lastName']);
+
+    $fullName = $firstName . " " . $lastName;
+
+    echo "Howdy! " . $fullName;
+}
+else {
+  
+    echo "Please submit the form.";
+}
+?>
+
+
+vii. Write a program to insert a data from url using variable named “college” and display it’s like “Welcome to COLLEGE NAME”.
+Code:
+<?php
+if (isset($_GET['college'])) {
+ $college = htmlspecialchars($_GET['college']);
+ echo "Welcome to $college College";
+} else {
+ echo "No college specified.";}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+ <title>College Welcome</title>
+</head>
+<body>
+ <form method="GET" action="">
+ Enter College Name: <input type="text" name="college" required><br>
+ <input type="submit" value="Submit">
+ </form>
+</body>
+</html>
+
+
+
+viii. Write a program to check the validation of form having following fields with respected
+ features and display output: 
+Name: required, alphabet only 
+Email: required, email validation
+ Mobile: Optional, numeric 
+Gender: required field
+Code:
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Form Validation</title>
+</head>
+<body>
+<?php
+$name = $email = $mobile = $gender = "";
+$nameErr = $emailErr = $mobileErr = $genderErr = "";
+$valid = true;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ if (empty($_POST["name"])) {
+ $nameErr = "Name is required";
+ $valid = false;
+ } else {
+ $name = test_input($_POST["name"]);
+ if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+ $nameErr = "Only letters and white space allowed";
+ $valid = false;
+ }}
+ if (empty($_POST["email"])) {
+ $emailErr = "Email is required";
+ $valid = false;
+ } else {
+ $email = test_input($_POST["email"]);
+ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+ $emailErr = "Invalid email format";
+ $valid = false;
+ } }
+ if (!empty($_POST["mobile"])) {
+ $mobile = test_input($_POST["mobile"]);
+ if (!preg_match("/^[0-9]*$/", $mobile)) {
+ $mobileErr = "Only numbers allowed";
+ $valid = false;
+ }
+ }
+ if (empty($_POST["gender"])) {
+ $genderErr = "Gender is required";
+ $valid = false;
+ } else {
+ $gender = test_input($_POST["gender"]);
+ }
+}
+function test_input($data) {
+ $data = trim($data);
+ $data = stripslashes($data);
+ $data = htmlspecialchars($data);
+ return $data;
+}
+if ($valid && $_SERVER["REQUEST_METHOD"] == "POST") {
+ echo "<h2>Your Input:</h2>";
+ echo "Name: " . $name . "<br>";
+ echo "Email: " . $email . "<br>";
+ echo "Mobile: " . $mobile . "<br>";
+ echo "Gender: " . $gender . "<br>";
+}
+?>
+<h2>Form Validation Example</h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+ Name: <input type="text" name="name" value="<?php echo $name; ?>">
+ <span style="color: red;">* <?php echo $nameErr; ?></span>
+ <br><br>
+ Email: <input type="text" name="email" value="<?php echo $email; ?>">
+ <span style="color: red;">* <?php echo $emailErr; ?></span>
+ <br><br>
+ Mobile: <input type="text" name="mobile" value="<?php echo $mobile; ?>">
+ <span style="color: red;"><?php echo $mobileErr; ?></span>
+ <br><br>
+ Gender:
+ <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked"; ?> value="female">Female
+ <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked"; ?> value="male">Male
+ <span style="color: red;">* <?php echo $genderErr; ?></span>
+ <br><br>
+ <input type="submit" name="submit" value="Submit">
+</form>
+</body>
+</html>
+
+ 
+ 
+ix. Write a program to make a view count for a webpage using file handling.
+Code:
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Page View Counter</title>
+</head>
+<body>
+<?php
+$counterFile = "counter.txt";
+if (!file_exists($counterFile)) {
+ file_put_contents($counterFile, "0");
+}
+$count = (int)file_get_contents($counterFile);
+$count++;
+file_put_contents($counterFile, $count);
+echo "<h1>This page has been viewed $count times.</h1>";
+?>
+</body>
+</html>
+
+
+x. Write a program to upload less than 2M image file in a specific location.
+Code:
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Upload Image</title>
+</head>
+<body>
+<h2>Upload Image</h2>
+<?php
+$uploadDir = "uploads/";
+if (!file_exists($uploadDir)) {
+ mkdir($uploadDir, 0777, true); // create directory recursively
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
+ $targetFile = $uploadDir . basename($_FILES["image"]["name"]);
+ $uploadOk = 1;
+ $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+ if ($_FILES["image"]["size"] > 2 * 1024 * 1024) { // 2MB limit
+ echo "Sorry, your file is too large. Please upload a file less than 2MB.";
+ $uploadOk = 0;
+ }
+ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+ && $imageFileType != "gif" ) {
+ echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+ $uploadOk = 0;
+ }
+ if ($uploadOk == 0) {
+ echo "Sorry, your file was not uploaded.";
+ } else {
+ if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+ echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+ } else {
+ echo "Sorry, there was an error uploading your file.";
+ }
+ }
+}
+?>
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+ Select image to upload (max 2MB):
+ <input type="file" name="image" id="image">
+ <input type="submit" value="Upload Image" name="submit">
+</form>
+</body>
+</html>
+
+
+
+
+
+xi. Write a program to set cookies of student roll number and name for 2 days and display in output.
+Code:
+<?php
+$roll_number = "100"; // Example roll number
+$student_name = "shyam maharjan"; // Example student name
+// Set cookies for 2 days (2 days * 24 hours * 60 minutes * 60 seconds)
+$cookie_duration = 2 * 24 * 60 * 60;
+setcookie("student_roll_number", $roll_number, time() + $cookie_duration, "/");
+setcookie("student_name", $student_name, time() + $cookie_duration, "/");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Set and Display Cookies</title>
+</head>
+<body>
+ <h1>Set and Display Cookies</h1>
+ <?php
+ if (isset($_COOKIE['student_roll_number']) && isset($_COOKIE['student_name'])) {
+ $roll_number = htmlspecialchars($_COOKIE['student_roll_number']);
+ $student_name = htmlspecialchars($_COOKIE['student_name']);
+ echo "Student Roll Number: " . $roll_number . "<br>";
+ echo "Student Name: " . $student_name;
+ } else {
+ echo "Cookies for Roll Number and Student Name are not set.";
+ }
+ ?>
+</body>
+</html>
+
+ 
+
+xii. Write a program to set session variable named program and display the output.
+Code:
+<?php
+session_start();
+$_SESSION['program'] = 'Computer Science'; 
+if (isset($_SESSION['program'])) {
+ echo "Session variable 'program' is set. Program: " . $_SESSION['program'];
+} else {
+ echo "Session variable 'program' is not set.";
+}
+?>
+
+
+
+xiii. Write a program to assign the data of following table into associative multidimensional array. And do the given task. 
+SQL_cmd                                  Syntax                                                                             Example
+ CREATE 		Create table table_name  			Create table article; 
+  DROP 			Drop table table_name 		   	Drop table article; 
+ALTER			 Alter object_type object_name parameters;       Alter table article add subject varchar;
+
+Code:
+<?php
+$tableData = array(
+ "article" => array(
+ "columns" => array("id", "title", "content"),
+ "primary_key" => "id",
+ "indexes" => array("title_index" => "title"),
+ )
+);
+
+
+function createTable(&$tableData, $tableName, $columns) {
+ if (!isset($tableData[$tableName])) {
+ $tableData[$tableName] = array(
+ "columns" => $columns,
+ "primary_key" => "",
+ "indexes" => array()
+ );
+ return "CREATE TABLE $tableName";
+ } else {
+ return "Table $tableName already exists.";
+ }
+}
+function dropTable(&$tableData, $tableName) {
+ if (isset($tableData[$tableName])) {
+ unset($tableData[$tableName]);
+ return "DROP TABLE $tableName";
+ } else {
+ return "Table $tableName does not exist.";
+ }
+}
+function alterTableAddColumn(&$tableData, $tableName, $columnName, $columnType) {
+ if (isset($tableData[$tableName])) {
+ $tableData[$tableName]['columns'][] = $columnName;
+ return "ALTER TABLE $tableName ADD $columnName $columnType";
+ } else {
+ return "Table $tableName does not exist.";
+ }
+}
+echo createTable($tableData, "comments", array("id", "article_id", "comment"));
+echo "<br>";
+echo dropTable($tableData, "comments");
+echo "<br>";
+echo alterTableAddColumn($tableData, "article", "author", "varchar(50)");
+echo "<br>";
+echo "<pre>";
+print_r($tableData);
+echo "</pre>";
+?>
+
+

@@ -1,0 +1,419 @@
+
+
+Lab 2: Cascading Style Sheets
+
+i.  Write a program to demonstrate the usage of inline, internal and external style sheet using CSS.
+Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Demonstration</title>
+    <style>
+        /* Internal Style */
+        h1 {
+            font-weight: bold;
+            color:orange;
+        }
+        p {
+            font-size: 20px;
+            color:chocolate;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- External Style -->
+</head>
+<body>
+    <h1>Welcome to CSS Demonstration</h1>
+    <p style="color:grey; font-style: italic;"> 
+    Nepal is a beautiful country located in South Asia</p> <!-- Inline Style -->
+    <p>Nepal has a rich cultural heritage influenced by Hinduism and Buddhism. </p>
+    <p class="external">
+    Nepal's geography is diverse, ranging from the fertile plains of the Terai
+    region to the rugged mountains of the Himalayas.</p>
+</body>
+</html>
+
+
+
+/* External Style */
+.external {
+    font-size: 24px;
+    color: skyblue;
+    font-style: italic;
+}
+
+
+
+
+ii.   Write a CSS code which displays the first letter of a paragraph with bigger font size and color.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>First Letter Styling</title>
+    <style>
+        p::first-letter {
+            font-size: 40px;
+            color:green;
+        }
+    </style>
+</head>
+<body>
+    <p> Schools are fundamental institutions for education.</p>
+</body>
+</html>
+
+	
+
+iii.    Write a CSS code which the changes the color of a link when you move the mouse over the link.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Link Hover Effect</title>
+    <style>
+        a:hover {
+            color:orange;
+        }
+    </style>
+</head>
+<body>
+    <a href="#">Hover over this link</a>
+</body>
+</html>
+
+
+
+iv.   Write a CSS code which places text over an image
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Over Image</title>
+    <style>
+        .container {
+            position: relative;
+            width: 50%;
+        }
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./logo.jpg" alt="Image" class="image">
+        <div class="text">Text Over Image</div>
+    </div>
+</body>
+</html>
+
+
+
+
+v.   Write a program to demonstrate the CSS list-style-type property like desc, circle, square, decimal, lower-alpha, lower-roman, upper-alpha and upper roman.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List Style Types</title>
+    <style>
+        .disc { list-style-type: disc; }
+        .circle { list-style-type: circle; }
+        .square { list-style-type: square; }
+        .decimal { list-style-type: decimal; }
+        .lower-alpha { list-style-type: lower-alpha; }
+        .lower-roman { list-style-type: lower-roman; }
+        .upper-alpha { list-style-type: upper-alpha; }
+        .upper-roman { list-style-type: upper-roman; }
+    </style>
+</head>
+<body>
+    <ul class="disc">
+        <li>Monopoly</li>
+        <li>Chess</li>
+    </ul>
+    <ul class="circle">
+        <li>Scrabble</li>
+        <li>Settlers of Catan</li>
+    </ul>
+    <ul class="square">
+        <li>Ticket to Ride</li>
+        <li>Poker</li>
+    </ul>
+    <ol class="decimal">
+        <li>Uno</li>
+        <li>Fortnite</li>
+    </ol>
+    <ol class="lower-alpha">
+        <li>Overwatch</li>
+        <li>Minecraft</li>
+    </ol>
+    <ol class="lower-roman">
+        <li>Civilization VI</li>
+        <li>FIFA series</li>
+    </ol>
+    <ol class="upper-alpha">
+        <li>Rocket League</li>
+        <li>Wii Sports</li>
+    </ol>
+    <ol class="upper-roman">
+        <li>Candy Crush Saga</li>
+        <li>Sudoku</li>
+    </ol>
+</body>
+</html>
+
+
+vi.   Write a program to demonstrate the CSS table using border, padding, margin, background color, text-align and font size.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Ram</td>
+            <td>Maharjan</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Hari</td>
+            <td>Shrestha</td>
+            <td>22</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+
+
+vii.    Write a program to demonstrate the box shadow property (h-offset, v-offset, blur, spread, color).
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Shadow</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+
+
+
+
+
+viii.   Write a program to demonstrate the CSS text effect using writing mode
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Effect</title>
+    <style>
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+    </style>
+</head>
+<body>
+    <p class="vertical-text">Helllo World</p>
+</body>
+</html>
+
+ 
+
+ix.    Write a program to demonstrate the responsive web design.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Web Design Demo</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav {
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Responsive Web Design Demo</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Welcome to our website!</h2>
+            <p>This is a demo of a responsive web design layout.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Responsive Web Design Demo. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+x.   Write a program to demonstrate the media queries.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Media Queries Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f0f0f0; 
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        p {
+            color: #666;
+        }
+        
+        @media (min-width: 769px) {
+            body {
+                background-color: #e0e0e0; 
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                background-color: #ccc; 
+            }
+        
+            .content {
+                background-color: #fff; /* White background for content area on smaller screens */
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Media Queries Demo</h1>
+        <p>This page demonstrates how media queries change styles based on screen width.</p>
+    </div>
+</body>
+</html>
+
+
+
+
+

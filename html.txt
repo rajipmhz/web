@@ -1,0 +1,371 @@
+Lab 1:  Hyper Text Markup Language
+i.	Write a html program for your bio-data like below: (bulleting, numbering, table, H1 to H6)
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bio-data</title>
+</head>
+<body>
+    <h1>Rajip's Bio-data</h1>
+
+    <h2>Personal Information</h2>
+    <ul>
+        <li>Name:</li>
+        <li>Age:</li>
+        <li>Address: Nepal</li>
+    </ul>
+
+    <h3>Education</h3>
+    <ol>
+        <li></li>
+        <li></li>
+    </ol>
+
+
+    <h4>Skills</h4>
+    <ul>
+        <li>Communication</li>
+        <li>Programming</li>
+    </ul>
+
+    <h5>Experience</h5>
+    <table border="1">
+        <tr>
+            <th>Company</th>
+            <th>Role</th>
+        </tr>
+        <tr>
+            <td>Company A</td>
+            <td>Developer</td>
+        </tr>
+        <tr>
+            <td>Company B</td>
+            <td>Analyst</td>
+        </tr>
+    </table>
+
+    <h6>Contact</h6>
+    <p>Email:@gmail.com</p>
+</body>
+</html>
+
+ii.  Insert frame in question number 1 using 25% and 75% vertically separated. And Add hyperlink of your parents’ bio-data in 25% as a navigation bar and 75% as a content bar to display bio-data.
+
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bio-data with Frames</title>
+</head>
+<frameset rows="25%,75%">
+    <frame src="./parents.html" name="navigation">
+    <frame src="./1.bio_data.html" name="content">
+</frameset>
+</html>
+
+
+	Parents.html:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parents Bio-data</title>
+</head>
+<body>
+    <h1>Parents Bio-data</h1>
+    <ul>
+        <li><a href="father.html" target="content">Father</a></li>
+        <li><a href="mother.html" target="content">Mother</a></li>
+    </ul>
+</body>
+</html>
+
+
+iii.  Write a program to demonstrate the different Types of Ordered Lists in HTML.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordered Lists</title>
+</head>
+<body>
+    <h1>Types of Ordered Lists</h1>
+    
+    <h2>Numerical List</h2>
+    <ol type="1">
+        <li>Nepal</li>
+        <li>China</li>
+    </ol>
+
+    <h2>Alphabetical List (Uppercase)</h2>
+    <ol type="A">
+        <li>Germany</li>
+        <li>France</li>
+    </ol>
+
+    <h2>Alphabetical List (Lowercase)</h2>
+    <ol type="a">
+        <li>India</li>
+        <li>Italy</li>
+    </ol>
+
+    <h2>Roman List (Uppercase)</h2>
+    <ol type="I">
+        <li>South Africa</li>
+        <li>Thailand</li>
+    </ol>
+
+    <h2>Roman List (Lowercase)</h2>
+    <ol type="i">
+        <li>Japan</li>
+        <li>Australia</li>
+    </ol>
+</body>
+</html>
+
+
+
+
+iv.  Write a HTML program which displays an image as a hyperlink. (For example add logo of your college in image and link to homepage of your college.)
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image as Hyperlink</title>
+</head>
+<body>
+    <h1>College Logo</h1>
+    <a href="https://nagarjunacollege.edu.np/">
+        <img src="./logo.jpg" alt="College Logo" />
+    </a>
+</body>
+</html>
+
+
+
+v.  Design a HTML login form having two text field using table, named: username and password where password must display in asterisk format (*) and login submit button.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form>
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+ 
+vi.  Design a HTML signup form having username, first name, middle name, last name, gender, email, password, and conformation password using table and register button and reset button.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Form</title>
+</head>
+<body>
+    <h1>Signup Form</h1>
+    <form>
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="firstname"></td>
+            </tr>
+            <tr>
+                <td>Middle Name:</td>
+                <td><input type="text" name="middlename"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="lastname"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female
+                </td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Confirm Password:</td>
+                <td><input type="password" name="confirmpassword"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Register">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
+
+Output:
+
+ 
+
+
+
+
+
+vii.  Write a program to create webpage print a paragraph with different font and color.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font and Color</title>
+</head>
+<body>
+    <h1>Paragraph with Different Font and Color</h1>
+    <p style="font-family: 'Times New Roman'; color: blue;">This is a paragraph in Times New Roman font     and blue color.</p>
+    <p style="font-family: Verdana; color: green;">This is a paragraph in Verdana font and green color.</p>
+    <p style="font-family: Arial; color: red;">This is a paragraph in Arial font and red color.</p>
+</body>
+</html>
+
+
+viii.  Write a program to demonstrate the Header, Body, and Footer.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Header, Body, Footer</title>
+</head>
+<body>
+    <header>
+        <h1>Header Section</h1>
+    </header>
+
+    <main>
+        <p>This is the body section.</p>
+    </main>
+
+    <footer>
+        <p>Footer Section</p>
+    </footer>
+</html>
+
+
+
+ix.  Write a program to create student registration webpage using html form.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    <form>
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="firstname"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="lastname"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female
+                </td>
+            </tr>
+            <tr>
+                <td>Birth Date:</td>
+                <td><input type="date" name="birthdate"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><textarea name="address" rows="4" cols="20"></textarea></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="tel" name="phone"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Register">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
+x.  Write a program to demonstrate the header and nav.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Header and Navigation</title>
+</head>
+<body>
+    <header>
+        <h1>My Website</h1>
+        <p>Welcome to my website!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Home</h2>
+        <p>This is the home section.</p>
+        <h2>About</h2>
+        <p>This is the about section.</p>
+        <h2>Services</h2>
+        <p>This is the services section.</p>
+        <h2>Contact</h2>
+        <p>This is the contact section.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+</body>
+</html>

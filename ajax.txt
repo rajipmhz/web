@@ -1,0 +1,218 @@
+Lab 4 : Ajax and XML
+
+
+i.    Write a program to create a simple XML document to display the address book.
+	Code:
+<?xml version="1.0" encoding="UTF-8"?>
+<addressBook>
+    <contact>
+        <name>Roshan Kumar</name>
+        <phone>123-456-7890</phone>
+        <email>roshankumar@example.com</email>
+        <address>
+            <street>123 Maple Ave</street>
+            <city>San Francisco</city>
+            <state>CA</state>
+            <zip>94101</zip>
+        </address>
+    </contact>
+    <contact>
+        <name>Jane Doe</name>
+        <phone>987-654-2109</phone>
+        <email>janedoe@example.com</email>
+        <address>
+            <street>789 Oak St</street>
+            <city>Chicago</city>
+            <state>IL</state>
+            <zip>60601</zip>
+        </address>
+    </contact>
+</addressBook>
+
+
+ii.   Write a program to create a simple XSLT transformation from XSL to XML.
+	Code:
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="transform.xsl"?>
+
+<addressBook>
+    <contact>
+        <name>Roshan Kumar</name>
+        <phone>123-456-7890</phone>
+        <email>roshankumar@example.com</email>
+        <address>
+            <street>123 Maple Ave</street>
+            <city>San Francisco</city>
+            <state>CA</state>
+            <zip>94101</zip>
+        </address>
+    </contact>
+    <contact>
+        <name>Jane Doe</name>
+        <phone>987-654-2109</phone>
+        <email>janedoe@example.com</email>
+        <address>
+            <street>789 Oak St</street>
+            <city>Chicago</city>
+            <state>IL</state>
+            <zip>60601</zip>
+        </address>
+    </contact>
+</addressBook>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/addressBook">
+        <html>
+        <body>
+            <h2>Address Book</h2>
+            <table border="1">
+                <tr bgcolor="#9acd32">
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                </tr>
+                <xsl:for-each select="contact">
+                    <tr>
+                        <td><xsl:value-of select="name"/></td>
+                        <td><xsl:value-of select="phone"/></td>
+                        <td><xsl:value-of select="email"/></td>
+                        <td>
+                            <xsl:value-of select="address/street"/>, 
+                            <xsl:value-of select="address/city"/>, 
+                            <xsl:value-of select="address/state"/> 
+                            <xsl:value-of select="address/zip"/>
+                        </td>
+                    </tr>
+                </xsl:for-each>
+            </table>
+        </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>
+
+
+iii.   Write a program to create a XML program for Internal DTD (Document Type Definition) creation.
+	Code:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE addressBook [
+    <!ELEMENT addressBook (contact+)>
+    <!ELEMENT contact (name, phone, email, address)>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT phone (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT address (street, city, state, zip)>
+    <!ELEMENT street (#PCDATA)>
+    <!ELEMENT city (#PCDATA)>
+    <!ELEMENT state (#PCDATA)>
+    <!ELEMENT zip (#PCDATA)>
+]>
+<addressBook>
+    <contact>
+        <name>Roshan Kumar</name>
+        <phone>123-456-7890</phone>
+        <email>roshankumar@example.com</email>
+        <address>
+            <street>123 Maple Ave</street>
+            <city>San Francisco</city>
+            <state>CA</state>
+            <zip>94101</zip>
+        </address>
+    </contact>
+    <contact>
+        <name>Jane Doe</name>
+        <phone>987-654-2109</phone>
+        <email>janedoe@example.com</email>
+        <address>
+            <street>789 Oak St</street>
+            <city>Chicago</city>
+            <state>IL</state>
+            <zip>60601</zip>
+        </address>
+    </contact>
+</addressBook>
+	
+
+
+iv.   Write a program to create a XML program for External DTD (Document Type Definition) creation.
+	Code:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE addressBook SYSTEM "31.addressBook.dtd">
+<addressBook>
+    <contact>
+        <name>John Doe</name>
+        <phone>123-456-7890</phone>
+        <email>johndoe@example.com</email>
+        <address>
+            <street>123 Main St</street>
+            <city>New York</city>
+            <state>NY</state>
+            <zip>10001</zip>
+        </address>
+    </contact>
+    <contact>
+        <name>Jane Smith</name>
+        <phone>987-654-3210</phone>
+        <email>janesmith@example.com</email>
+        <address>
+            <street>456 Elm St</street>
+            <city>Los Angeles</city>
+            <state>CA</state>
+            <zip>90001</zip>
+        </address>
+    </contact>
+</addressBook>
+
+
+
+v.   Write a program to create a program for XML Schema creation and display element and attributes.
+	Code:
+<?xml version="1.0" encoding="UTF-8"?>
+<addressBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./32.addressbook.xsd">
+    <contact>
+        <name>Roshan Kumar</name>
+        <phone>123-456-7890</phone>
+        <email>roshankumar@example.com</email>
+        <address>
+            <street>123 Maple Ave</street>
+            <city>San Francisco</city>
+            <state>CA</state>
+            <zip>94101</zip>
+        </address>
+    </contact>
+</addressBook>
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="addressBook">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="contact" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="phone" type="xs:string"/>
+                            <xs:element name="email" type="xs:string"/>
+                            <xs:element name="address">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="street" type="xs:string"/>
+                                        <xs:element name="city" type="xs:string"/>
+                                        <xs:element name="state" type="xs:string"/>
+                                        <xs:element name="zip" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+
+ 

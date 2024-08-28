@@ -1,0 +1,290 @@
+
+Lab 3 : Client-Side Scripting with JavaScript 
+
+
+i.    Write JavaScript to validate the following fields of the Registration page.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <script>
+        function validateForm() {
+            var firstName = document.forms["regForm"]["firstname"].value;
+            var lastName = document.forms["regForm"]["lastname"].value;
+            var password = document.forms["regForm"]["password"].value;
+            var email = document.forms["regForm"]["email"].value;
+            var phone = document.forms["regForm"]["phone"].value;
+            var address = document.forms["regForm"]["address"].value;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var phonePattern = /^\d{10}$/;
+
+            if (firstName.length < 6 || !/^[a-zA-Z]+$/.test(firstName)) {
+                alert("First Name should contain alphabets and be at least 6 characters long.");
+                return false;
+            }
+            if (password.length < 6) {
+                alert("Password should be at least 6 characters long.");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Invalid E-mail ID.");
+                return false;
+            }
+            if (!phonePattern.test(phone)) {
+                alert("Phone number should contain 10 digits.");
+                return false;
+            }
+            if (lastName == "" || address == "") {
+                alert("Last Name and Address should not be empty.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form name="regForm" onsubmit="return validateForm()">
+        First Name: <input type="text" name="firstname"><br><br>
+        Last Name: <input type="text" name="lastname"><br><br>
+        Password: <input type="password" name="password"><br><br>
+        E-mail: <input type="text" name="email"><br><br>
+        Mobile Number: <input type="text" name="phone"><br><br>
+        Address: <textarea name="address"></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+ 
+ii.    Write a program to demonstrate the different types of operators.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Operators in JavaScript</title>
+    <script>
+        function demonstrateOperators() {
+            document.write("<h2>Arithmetic Operators</h2>");
+            var a = 15;
+            var b = 25;
+            document.write("Addition: " + (a + b) + "<br>");
+            document.write("Subtraction: " + (a - b) + "<br>");
+            document.write("Multiplication: " + (a * b) + "<br>");
+            document.write("Division: " + (a / b) + "<br>");
+            document.write("Modulus: " + (a % b) + "<br>");
+
+            document.write("<h2>Comparison Operators</h2>");
+            document.write("Equal: " + (a == b) + "<br>");
+            document.write("Not Equal: " + (a != b) + "<br>");
+            document.write("Greater: " + (a > b) + "<br>");
+            document.write("Lesser: " + (a < b) + "<br>");
+
+            document.write("<h2>Logical Operators</h2>");
+            var x = true;
+            var y = false;
+            document.write("AND: " + (x && y) + "<br>");
+            document.write("OR: " + (x || y) + "<br>");
+            document.write("NOT: " + (!x) + "<br>");
+
+            document.write("<h2>Assignment Operators</h2>");
+            var c = 30;
+            c += 10;
+            document.write("Add and Assign: " + c + "<br>");
+
+            document.write("<h2>Bitwise Operators</h2>");
+            document.write("Bitwise AND: " + (a & b) + "<br>");
+            document.write("Bitwise OR: " + (a | b) + "<br>");
+            document.write("Bitwise XOR: " + (a ^ b) + "<br>");
+        }
+    </script>
+</head>
+<body onload="demonstrateOperators()">
+    <h1>Check Below for Operator Demonstrations</h1>
+</body>
+</html>
+
+
+ 
+iii.     Write a program to demonstrate the different types of dialog boxes.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dialog Boxes</title>
+    <script>
+        function showAlert() {
+            alert("This is an alert box!");
+        }
+        function showConfirm() {
+            var result = confirm("Do you want to proceed?");
+            if (result) {
+                alert("You pressed OK!");
+            } else {
+                alert("You pressed Cancel!");
+            }
+        }
+        function showPrompt() {
+            var name = prompt("Please enter your name:", "Harry Potter");
+            if (name != null) {
+                alert("Hello " + name + "! How are you today?");   }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="showAlert()">Show Alert</button>
+    <button onclick="showConfirm()">Show Confirm</button>
+    <button onclick="showPrompt()">Show Prompt</button>
+</body>
+</html>
+
+
+iv.   Write a program to demonstrate the regular expression.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regular Expression</title>
+    <script>
+        function testRegEx() {
+            var str = "The quick brown fox jumps over the lazy dog.";
+            var pattern = /quick/;
+            var result = pattern.test(str);
+            alert("Pattern found: " + result);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="testRegEx()">Test Regular Expression</button>
+</body>
+</html>
+
+
+v.   Write a program to demonstrate the handling cookies.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Handling Cookies</title>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            var user = getCookie("username");
+            if (user != "") {
+                document.getElementById("welcomeMessage").innerText = "Welcome again " + user;
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 365);
+                    document.getElementById("welcomeMessage").innerText = "Welcome " + user;
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="checkCookie()">
+    <h1>Check Cookie Handling in JavaScript</h1>
+    <p id="welcomeMessage"></p>
+    <h2>Cookie Details</h2>
+    <p id="cookieDetails"></p>
+    <script>
+        document.getElementById("cookieDetails").innerText = document.cookie;
+    </script>
+</body>
+</html>
+
+ 
+vi.   Write a program to demonstrate the JQuery.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Demonstration</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#content").toggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>Toggle Content</button>
+    <div id="content" style="display:none;">
+        <h1>This is a jQuery demonstration</h1>
+        <p>Click the button to toggle this content.</p>
+    </div>
+</body>
+</html>
+
+
+vii.   Write a program to demonstrate the JSON.
+	Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Demonstration</title>
+    <script>
+        function demonstrateJSON() {
+            var person = {
+                "firstName": "",
+                "lastName": "",
+                "age": 0,
+                "address": {
+                    "street": "a",
+                    "city": "",
+                    "state": ""
+                }
+            };
+
+            var jsonStr = JSON.stringify(person);
+            document.write("<h2>JSON String</h2>");
+            document.write(jsonStr + "<br><br>");
+
+            var jsonObj = JSON.parse(jsonStr);
+            document.write("<h2>JSON Object</h2>");
+            document.write("First Name: " + jsonObj.firstName + "<br>");
+            document.write("Last Name: " + jsonObj.lastName + "<br>");
+            document.write("Age: " + jsonObj.age + "<br>");
+            document.write("Address: " + jsonObj.address.street + ", " + jsonObj.address.city + ", " + jsonObj.address.state + "<br>");
+        }
+    </script>
+</head>
+<body onload="demonstrateJSON()">
+    <h1>JSON Demonstration</h1>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
